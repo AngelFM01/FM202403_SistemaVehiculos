@@ -1,9 +1,133 @@
 @Api_HostAddress = http://localhost:5270
 
-### Rama Base: aun no hay endpoints. Los modulos (Marcas, Vehiculos, Ventas)
-### se agregan en las ramas Core y CQRS.
+### --- MARCAS (Gestionar Marcas) ---
 
-GET {{Api_HostAddress}}/
+### GET todas las marcas
+GET {{Api_HostAddress}}/marcas
 Accept: application/json
+
+###
+
+### GET marca por ID
+GET {{Api_HostAddress}}/marcas/1
+Accept: application/json
+
+###
+
+### POST crear marca
+POST {{Api_HostAddress}}/marcas
+Content-Type: application/json
+
+{
+  "nombre": "Toyota"
+}
+
+###
+
+### PUT actualizar marca
+PUT {{Api_HostAddress}}/marcas/1
+Content-Type: application/json
+
+{
+  "nombre": "Toyota Motors"
+}
+
+###
+
+### DELETE marca
+DELETE {{Api_HostAddress}}/marcas/1
+
+###
+
+### --- VEHICULOS (Gestionar Vehiculos) ---
+
+### GET todos los vehiculos
+GET {{Api_HostAddress}}/vehiculos
+Accept: application/json
+
+###
+
+### GET vehiculos filtrados por marca
+GET {{Api_HostAddress}}/vehiculos?marcaId=1
+Accept: application/json
+
+###
+
+### GET vehiculo por ID
+GET {{Api_HostAddress}}/vehiculos/1
+Accept: application/json
+
+###
+
+### POST crear vehiculo
+POST {{Api_HostAddress}}/vehiculos
+Content-Type: application/json
+
+{
+  "marcaId": 1,
+  "modelo": "Corolla",
+  "anio": 2024,
+  "cantidadPuertas": 4
+}
+
+###
+
+### PUT actualizar vehiculo
+PUT {{Api_HostAddress}}/vehiculos/1
+Content-Type: application/json
+
+{
+  "marcaId": 1,
+  "modelo": "Corolla XEI",
+  "anio": 2025,
+  "cantidadPuertas": 4
+}
+
+###
+
+### DELETE vehiculo
+DELETE {{Api_HostAddress}}/vehiculos/1
+
+###
+
+### --- VENTAS (Realizar Venta Vehiculo) ---
+
+### GET todas las ventas
+GET {{Api_HostAddress}}/ventas
+Accept: application/json
+
+###
+
+### GET venta por ID
+GET {{Api_HostAddress}}/ventas/1
+Accept: application/json
+
+###
+
+### POST realizar venta de vehiculo
+POST {{Api_HostAddress}}/ventas
+Content-Type: application/json
+
+{
+  "vehiculoId": 1,
+  "totalVenta": 25000.0,
+  "cantidad": 1
+}
+
+###
+
+### PUT actualizar venta
+PUT {{Api_HostAddress}}/ventas/1
+Content-Type: application/json
+
+{
+  "totalVenta": 24500.0,
+  "cantidad": 1
+}
+
+###
+
+### DELETE venta
+DELETE {{Api_HostAddress}}/ventas/1
 
 ###

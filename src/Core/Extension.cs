@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Core;
 
@@ -6,8 +7,7 @@ public static class Extension
 {
     public static IServiceCollection AddCore(this IServiceCollection services)
     {
-        // Rama Core: configuracion previa a la implementacion de MediatR.
-        // El registro de MediatR (handlers de Commands/Queries) se agrega en la rama CQRS.
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         return services;
     }
 }
